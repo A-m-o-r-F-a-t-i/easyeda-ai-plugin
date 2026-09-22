@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "easyeda",
-  "version": "2.8.10",
-  "description": "嘉立创 EDA 原理图与 PCB 工具。PCB Skill 5.4.2 仅补充原生 DRC 回执证据规则；PCB MCP 2.4.10 提供可续取原生 DRC、完整统计与分页明细，并修复超时终态及能力失败诊断。21 个受保护生产工具与固定组件提交共同构成可复现插件。",
+  "version": "2.8.11",
+  "description": "嘉立创 EDA 原理图与 PCB 工具。PCB Skill 5.4.2 保留原生 DRC 回执证据规则；PCB MCP 2.4.11 兼容 EasyEDA Pro 4.1.60 变换后组件焊盘的 0.1 mil 坐标量化，同时继续严格校验焊盘身份、网络、层与真实姿态漂移。21 个受保护生产工具与固定组件提交共同构成可复现插件。",
   "extensions": {
     "io.github.uvwt.agentdock": {
       "heavy": true

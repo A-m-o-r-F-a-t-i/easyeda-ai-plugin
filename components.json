@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "plugin": {
     "name": "easyeda",
-    "version": "2.8.10"
+    "version": "2.8.11"
   },
   "components": [
     {
@@ -43,7 +43,7 @@
     {
       "type": "mcp",
       "name": "easyeda-pcb",
-      "version": "2.4.10",
+      "version": "2.4.11",
       "path": "mcp/easyeda-pcb",
       "repository": "https://github.com/A-m-o-r-F-a-t-i/easyeda-mcp-pcb.git"
     }

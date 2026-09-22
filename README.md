@@ -2,7 +2,7 @@
 
 简体中文 | [English](README.en.md)
 
-这是 AgentDock 的嘉立创 EDA AI 插件聚合仓库，当前插件版本为 **2.8.10**。仓库本身只保存插件清单、MCP 启动配置、构建脚本和固定的组件提交；5 个 Skill 与 1 个 PCB MCP 均由独立的 GitHub 公开仓库维护，并通过 Git submodule 组合成完整插件。
+这是 AgentDock 的嘉立创 EDA AI 插件聚合仓库，当前插件版本为 **2.8.11**。仓库本身只保存插件清单、MCP 启动配置、构建脚本和固定的组件提交；5 个 Skill 与 1 个 PCB MCP 均由独立的 GitHub 公开仓库维护，并通过 Git submodule 组合成完整插件。
 
 ## 仓库结构
 
@@ -13,7 +13,7 @@
 | `skills/easyeda-pcb-layout-routing` | 5.4.2 | [`easyeda-skill-pcb-layout-routing`](https://github.com/A-m-o-r-F-a-t-i/easyeda-skill-pcb-layout-routing) | PCB 板框、布局、布线、铺铜、丝印与生产验收；仅在取得 `COMPLETED`、已验证总数与汇总后承认原生 DRC 结果，运行中作业按 ID 续取 |
 | `skills/easyeda-pro-format-skill` | 1.0.2 | [`easyeda-skill-pro-format`](https://github.com/A-m-o-r-F-a-t-i/easyeda-skill-pro-format) | 嘉立创底层格式文档、Schema 和格式校验器 |
 | `skills/easyeda-schematic-net-fanout` | 2.1.4 | [`easyeda-skill-schematic-net-fanout`](https://github.com/A-m-o-r-F-a-t-i/easyeda-skill-schematic-net-fanout) | 原理图设计、需求补全、ECO 和 PCB 同步 |
-| `mcp/easyeda-pcb` | 2.4.10 | [`easyeda-mcp-pcb`](https://github.com/A-m-o-r-F-a-t-i/easyeda-mcp-pcb) | 对当前 EasyEDA PCB 文档执行 21 个受保护生产操作；详细 DRC 支持作业续取、完整统计与分页违规明细，避免大结果超时或被误判为空 |
+| `mcp/easyeda-pcb` | 2.4.11 | [`easyeda-mcp-pcb`](https://github.com/A-m-o-r-F-a-t-i/easyeda-mcp-pcb) | 对当前 EasyEDA PCB 文档执行 21 个受保护生产操作；兼容 4.1.60 的 0.1 mil 组件焊盘坐标量化，并保留可续取原生 DRC、完整统计与分页违规明细 |
 
 父仓库通过 `.gitmodules` 固定每个组件的具体提交，因此插件发布可以复现。更新某个成员仓库后，需要在本仓库中更新对应 submodule 指针并再次提交，不能只依赖成员仓库的浮动 `main`。
 
@@ -52,8 +52,8 @@ pwsh ./scripts/build-plugin.ps1
 默认输出：
 
 ```text
-dist/easyeda-plugin-2.8.10/
-dist/easyeda-plugin-2.8.10.zip
+dist/easyeda-plugin-2.8.11/
+dist/easyeda-plugin-2.8.11.zip
 ```
 
 ## 更新组件

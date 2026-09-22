@@ -97,7 +97,8 @@ if (-not $SkipTests) {
         try {
             & npm ci
             if ($LASTEXITCODE -ne 0) { return }
-            & node validate.js FONT '{"width":50,"height":40,"path":[[2,5,"L",2,35,48,35,48,5,2,5]]}'
+            $formatSmokeScript = "const {validateFormat}=require('./validate.js');const result=validateFormat('FONT',{width:50,height:40,path:[[2,5,'L',2,35,48,35,48,5,2,5]]});console.log(JSON.stringify(result,null,2));process.exit(result.valid?0:1);"
+            & node -e $formatSmokeScript
         }
         finally { Pop-Location }
     }
