@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "easyeda",
-  "version": "2.8.8",
-  "description": "嘉立创 EDA 原理图与 PCB 工具。PCB Skill 5.4.0 恢复布局、布线、铺铜和交付阶段的必做 DRC，要求跨组件重叠立即修正，并仅对同网焊盘间距、可信库封装内部报告和施工期未布线作有记录的条件豁免；PCB MCP 2.4.8 继续提供 21 个受保护生产工具。",
+  "version": "2.8.10",
+  "description": "嘉立创 EDA 原理图与 PCB 工具。PCB Skill 5.4.2 仅补充原生 DRC 回执证据规则；PCB MCP 2.4.10 提供可续取原生 DRC、完整统计与分页明细，并修复超时终态及能力失败诊断。21 个受保护生产工具与固定组件提交共同构成可复现插件。",
   "extensions": {
     "io.github.uvwt.agentdock": {
       "heavy": true
