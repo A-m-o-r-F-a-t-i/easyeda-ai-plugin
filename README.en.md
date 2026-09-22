@@ -2,7 +2,7 @@
 
 [简体中文](README.md) | English
 
-This is the aggregate AgentDock plugin repository for the EasyEDA AI toolchain. The current plugin version is **2.8.11**. The parent repository stores only plugin manifests, the MCP launch configuration, build scripts, and pinned component commits. Five Skills and one PCB MCP are maintained in separate public GitHub repositories and assembled through Git submodules.
+This is the aggregate AgentDock plugin repository for the EasyEDA AI toolchain. The current plugin version is **2.9.0**. The parent repository stores only plugin manifests, the MCP launch configuration, build scripts, and pinned component commits. Five Skills and one PCB MCP are maintained in separate public GitHub repositories and assembled through Git submodules.
 
 ## Repository layout
 
@@ -10,10 +10,10 @@ This is the aggregate AgentDock plugin repository for the EasyEDA AI toolchain. 
 | --- | ---: | --- | --- |
 | `skills/easyeda-api` | 2.3.0 | [`easyeda-skill-api`](https://github.com/A-m-o-r-F-a-t-i/easyeda-skill-api) | Bridge, Gateway Protocol, window/document identity, and public API references |
 | `skills/easyeda-eprj3` | 1.7.1 | [`easyeda-skill-eprj3`](https://github.com/A-m-o-r-F-a-t-i/easyeda-skill-eprj3) | Offline `.eprj3` generation, editing, and validation |
-| `skills/easyeda-pcb-layout-routing` | 5.4.2 | [`easyeda-skill-pcb-layout-routing`](https://github.com/A-m-o-r-F-a-t-i/easyeda-skill-pcb-layout-routing) | Board outlines, placement, routing, pours, silkscreen, and release criteria; native DRC is accepted only from a completed, verified receipt with complete totals and summaries, while running jobs are resumed by ID |
+| `skills/easyeda-pcb-layout-routing` | 5.5.0 | [`easyeda-skill-pcb-layout-routing`](https://github.com/A-m-o-r-F-a-t-i/easyeda-skill-pcb-layout-routing) | Board outlines, placement, routing, pours, silkscreen, and release criteria; new outlines are centered on the coordinate origin and placement DRC prioritizes spacing findings caused by cross-object pad overlap |
 | `skills/easyeda-pro-format-skill` | 1.0.2 | [`easyeda-skill-pro-format`](https://github.com/A-m-o-r-F-a-t-i/easyeda-skill-pro-format) | Low-level EasyEDA format documentation, schemas, and validator |
 | `skills/easyeda-schematic-net-fanout` | 2.1.4 | [`easyeda-skill-schematic-net-fanout`](https://github.com/A-m-o-r-F-a-t-i/easyeda-skill-schematic-net-fanout) | Schematic design, requirement expansion, ECO handling, and PCB synchronization |
-| `mcp/easyeda-pcb` | 2.4.11 | [`easyeda-mcp-pcb`](https://github.com/A-m-o-r-F-a-t-i/easyeda-mcp-pcb) | Twenty-one guarded production operations; accepts EasyEDA Pro 4.1.60 component-pad coordinate quantization to 0.1 mil while retaining strict identity checks and resumable native DRC with complete paged findings |
+| `mcp/easyeda-pcb` | 2.5.0 | [`easyeda-mcp-pcb`](https://github.com/A-m-o-r-F-a-t-i/easyeda-mcp-pcb) | Twenty-one guarded production operations; enforces origin-centered new outlines and blocks cross-object pad overlap before and after component, standalone-pad, and via writes, with verified rollback after unsafe layer transforms |
 
 `.gitmodules` pins every component to an exact commit, making plugin releases reproducible. After changing a component repository, update and commit the corresponding submodule pointer here; do not rely on a floating remote `main` branch.
 
@@ -52,8 +52,8 @@ pwsh ./scripts/build-plugin.ps1
 Default outputs:
 
 ```text
-dist/easyeda-plugin-2.8.11/
-dist/easyeda-plugin-2.8.11.zip
+dist/easyeda-plugin-2.9.0/
+dist/easyeda-plugin-2.9.0.zip
 ```
 
 ## Update components
