@@ -2,11 +2,11 @@
 
 [简体中文](README.md) | English
 
-This is the aggregate AgentDock plugin repository for the EasyEDA AI toolchain. The current plugin version is **2.8.8**. The parent repository stores only plugin manifests, the MCP launch configuration, build scripts, and pinned component commits. Five Skills and one PCB MCP are maintained in separate private GitHub repositories and assembled through Git submodules.
+This is the aggregate AgentDock plugin repository for the EasyEDA AI toolchain. The current plugin version is **2.8.8**. The parent repository stores only plugin manifests, the MCP launch configuration, build scripts, and pinned component commits. Five Skills and one PCB MCP are maintained in separate public GitHub repositories and assembled through Git submodules.
 
 ## Repository layout
 
-| Plugin path | Version | Private component repository | Responsibility |
+| Plugin path | Version | Public component repository | Responsibility |
 | --- | ---: | --- | --- |
 | `skills/easyeda-api` | 2.3.0 | [`easyeda-skill-api`](https://github.com/A-m-o-r-F-a-t-i/easyeda-skill-api) | Bridge, Gateway Protocol, window/document identity, and public API references |
 | `skills/easyeda-eprj3` | 1.7.1 | [`easyeda-skill-eprj3`](https://github.com/A-m-o-r-F-a-t-i/easyeda-skill-eprj3) | Offline `.eprj3` generation, editing, and validation |
@@ -19,7 +19,7 @@ This is the aggregate AgentDock plugin repository for the EasyEDA AI toolchain. 
 
 ## Clone
 
-Your Git credentials must be authorized for every private submodule.
+All submodules are public and can be cloned recursively without private-repository credentials.
 
 ```powershell
 git clone --recurse-submodules https://github.com/A-m-o-r-F-a-t-i/easyeda-ai-plugin.git
@@ -76,8 +76,8 @@ git commit -m "chore: update EasyEDA plugin components"
 
 ## Relationship to the API plugin
 
-This repository is the **AgentDock AI plugin** and owns Skills plus the MCP. The Enhanced API Gateway extension, Protocol, shared runtime, and local Bridge installed with EasyEDA Pro are maintained in the separate private [`easyeda-api-plugin`](https://github.com/A-m-o-r-F-a-t-i/easyeda-api-plugin) repository. The top-level `easyeda-plugin-suite` repository aggregates both parents.
+This repository is the **AgentDock AI plugin** and owns Skills plus the MCP. The Enhanced API Gateway extension, Protocol, shared runtime, and local Bridge installed with EasyEDA Pro are maintained in the separate public [`easyeda-api-plugin`](https://github.com/A-m-o-r-F-a-t-i/easyeda-api-plugin) repository. The top-level `easyeda-plugin-suite` repository aggregates both parents.
 
 ## Licensing
 
-This aggregate repository does not impose one blanket open-source license on every component. Each submodule retains its own license and upstream attribution. Private visibility does not alter MIT, Apache-2.0, or other third-party rights contained in those components.
+This aggregate repository does not impose one blanket open-source license on every component. Each submodule retains its own license and upstream attribution. Public visibility does not alter MIT, Apache-2.0, or other third-party rights contained in those components.

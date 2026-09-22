@@ -2,11 +2,11 @@
 
 简体中文 | [English](README.en.md)
 
-这是 AgentDock 的嘉立创 EDA AI 插件聚合仓库，当前插件版本为 **2.8.8**。仓库本身只保存插件清单、MCP 启动配置、构建脚本和固定的组件提交；5 个 Skill 与 1 个 PCB MCP 均由独立的 GitHub 私有仓库维护，并通过 Git submodule 组合成完整插件。
+这是 AgentDock 的嘉立创 EDA AI 插件聚合仓库，当前插件版本为 **2.8.8**。仓库本身只保存插件清单、MCP 启动配置、构建脚本和固定的组件提交；5 个 Skill 与 1 个 PCB MCP 均由独立的 GitHub 公开仓库维护，并通过 Git submodule 组合成完整插件。
 
 ## 仓库结构
 
-| 插件路径 | 版本 | 独立私有仓库 | 作用 |
+| 插件路径 | 版本 | 独立公开仓库 | 作用 |
 | --- | ---: | --- | --- |
 | `skills/easyeda-api` | 2.3.0 | [`easyeda-skill-api`](https://github.com/A-m-o-r-F-a-t-i/easyeda-skill-api) | Bridge、Gateway Protocol、窗口与文档身份及公开 API 资料 |
 | `skills/easyeda-eprj3` | 1.7.1 | [`easyeda-skill-eprj3`](https://github.com/A-m-o-r-F-a-t-i/easyeda-skill-eprj3) | 离线 `.eprj3` 工程生成、编辑和校验 |
@@ -19,7 +19,7 @@
 
 ## 克隆
 
-私有 submodule 要求当前 Git 凭据能够访问全部成员仓库。
+全部 submodule 均为公开仓库，可直接递归克隆。
 
 ```powershell
 git clone --recurse-submodules https://github.com/A-m-o-r-F-a-t-i/easyeda-ai-plugin.git
@@ -76,8 +76,8 @@ git commit -m "chore: update EasyEDA plugin components"
 
 ## 与 API 插件的关系
 
-本仓库是 **AgentDock AI 插件**，负责 Skill 和 MCP。嘉立创客户端内安装的 Enhanced API Gateway、Protocol、共享运行时和本机 Bridge 位于独立私有仓库 [`easyeda-api-plugin`](https://github.com/A-m-o-r-F-a-t-i/easyeda-api-plugin)。两者再由最上层 `easyeda-plugin-suite` 统一聚合。
+本仓库是 **AgentDock AI 插件**，负责 Skill 和 MCP。嘉立创客户端内安装的 Enhanced API Gateway、Protocol、共享运行时和本机 Bridge 位于独立公开仓库 [`easyeda-api-plugin`](https://github.com/A-m-o-r-F-a-t-i/easyeda-api-plugin)。两者再由最上层 `easyeda-plugin-suite` 统一聚合。
 
 ## 许可证
 
-该聚合仓库不为所有组件声明统一的开源许可证。每个 submodule 保留自己的许可证和上游归属；私有仓库属性不会改变其中 MIT、Apache-2.0 或其他第三方材料的原始权利。
+该聚合仓库不为所有组件声明统一的开源许可证。每个 submodule 保留自己的许可证和上游归属；公开仓库属性不会改变其中 MIT、Apache-2.0 或其他第三方材料的原始权利。
