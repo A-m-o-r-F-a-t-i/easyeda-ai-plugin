@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "easyeda",
-  "version": "2.9.0",
-  "description": "嘉立创 EDA 原理图与 PCB 工具。PCB Skill 5.5.0 要求新板框以坐标原点为几何中心，并在布局 DRC 中优先处理重叠导致的间距违规；PCB MCP 2.5.0 在写入前后阻止不同元件焊盘重叠及独立大焊盘、过孔侵入元件焊盘，必要时验证回滚元件。21 个受保护生产工具与固定组件提交共同构成可复现插件。",
+  "version": "2.9.1",
+  "description": "嘉立创 EDA 原理图与 PCB 工具。PCB Skill 5.5.1 允许小型少元件板一次完成不超过 100 个展开操作的完整布局，大板按功能区分轮，并要求当前轮重叠门通过后才能继续；PCB MCP 2.5.0 强制新板框原点居中，在写入前后阻止跨对象焊盘重叠并提供可恢复的布局门结果。21 个受保护生产工具与固定组件提交共同构成可复现插件。",
   "extensions": {
     "io.github.uvwt.agentdock": {
       "heavy": true
