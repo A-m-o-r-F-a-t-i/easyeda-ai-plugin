@@ -1,0 +1,18 @@
+[submodule "skills/easyeda-api"]
+	path = skills/easyeda-api
+	url = https://github.com/A-m-o-r-F-a-t-i/easyeda-skill-api.git
+[submodule "skills/easyeda-eprj3"]
+	path = skills/easyeda-eprj3
+	url = https://github.com/A-m-o-r-F-a-t-i/easyeda-skill-eprj3.git
+[submodule "skills/easyeda-pcb-layout-routing"]
+	path = skills/easyeda-pcb-layout-routing
+	url = https://github.com/A-m-o-r-F-a-t-i/easyeda-skill-pcb-layout-routing.git
+[submodule "skills/easyeda-pro-format-skill"]
+	path = skills/easyeda-pro-format-skill
+	url = https://github.com/A-m-o-r-F-a-t-i/easyeda-skill-pro-format.git
+[submodule "skills/easyeda-schematic-net-fanout"]
+	path = skills/easyeda-schematic-net-fanout
+	url = https://github.com/A-m-o-r-F-a-t-i/easyeda-skill-schematic-net-fanout.git
+[submodule "mcp/easyeda-pcb"]
+	path = mcp/easyeda-pcb
+	url = https://github.com/A-m-o-r-F-a-t-i/easyeda-mcp-pcb.git

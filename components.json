@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "plugin": {
+    "name": "easyeda",
+    "version": "2.8.5"
+  },
+  "components": [
+    {
+      "type": "skill",
+      "name": "easyeda-api",
+      "version": "2.3.0",
+      "path": "skills/easyeda-api",
+      "repository": "https://github.com/A-m-o-r-F-a-t-i/easyeda-skill-api.git"
+    },
+    {
+      "type": "skill",
+      "name": "easyeda-eprj3",
+      "version": "1.7.1",
+      "path": "skills/easyeda-eprj3",
+      "repository": "https://github.com/A-m-o-r-F-a-t-i/easyeda-skill-eprj3.git"
+    },
+    {
+      "type": "skill",
+      "name": "easyeda-pcb-layout-routing",
+      "version": "5.2.0",
+      "path": "skills/easyeda-pcb-layout-routing",
+      "repository": "https://github.com/A-m-o-r-F-a-t-i/easyeda-skill-pcb-layout-routing.git"
+    },
+    {
+      "type": "skill",
+      "name": "easyeda-pro-format-skill",
+      "version": "1.0.2",
+      "path": "skills/easyeda-pro-format-skill",
+      "repository": "https://github.com/A-m-o-r-F-a-t-i/easyeda-skill-pro-format.git"
+    },
+    {
+      "type": "skill",
+      "name": "easyeda-schematic-net-fanout",
+      "version": "2.1.4",
+      "path": "skills/easyeda-schematic-net-fanout",
+      "repository": "https://github.com/A-m-o-r-F-a-t-i/easyeda-skill-schematic-net-fanout.git"
+    },
+    {
+      "type": "mcp",
+      "name": "easyeda-pcb",
+      "version": "2.4.7",
+      "path": "mcp/easyeda-pcb",
+      "repository": "https://github.com/A-m-o-r-F-a-t-i/easyeda-mcp-pcb.git"
+    }
+  ]
+}
