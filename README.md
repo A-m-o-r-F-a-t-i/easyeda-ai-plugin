@@ -2,7 +2,7 @@
 
 简体中文 | [English](README.en.md)
 
-这是 AgentDock 的嘉立创 EDA AI 插件聚合仓库，当前插件版本为 **2.8.5**。仓库本身只保存插件清单、MCP 启动配置、构建脚本和固定的组件提交；5 个 Skill 与 1 个 PCB MCP 均由独立的 GitHub 私有仓库维护，并通过 Git submodule 组合成完整插件。
+这是 AgentDock 的嘉立创 EDA AI 插件聚合仓库，当前插件版本为 **2.8.6**。仓库本身只保存插件清单、MCP 启动配置、构建脚本和固定的组件提交；5 个 Skill 与 1 个 PCB MCP 均由独立的 GitHub 私有仓库维护，并通过 Git submodule 组合成完整插件。
 
 ## 仓库结构
 
@@ -10,7 +10,7 @@
 | --- | ---: | --- | --- |
 | `skills/easyeda-api` | 2.3.0 | [`easyeda-skill-api`](https://github.com/A-m-o-r-F-a-t-i/easyeda-skill-api) | Bridge、Gateway Protocol、窗口与文档身份及公开 API 资料 |
 | `skills/easyeda-eprj3` | 1.7.1 | [`easyeda-skill-eprj3`](https://github.com/A-m-o-r-F-a-t-i/easyeda-skill-eprj3) | 离线 `.eprj3` 工程生成、编辑和校验 |
-| `skills/easyeda-pcb-layout-routing` | 5.2.0 | [`easyeda-skill-pcb-layout-routing`](https://github.com/A-m-o-r-F-a-t-i/easyeda-skill-pcb-layout-routing) | PCB 板框、布局、布线、铺铜、丝印与生产验收 |
+| `skills/easyeda-pcb-layout-routing` | 5.3.0 | [`easyeda-skill-pcb-layout-routing`](https://github.com/A-m-o-r-F-a-t-i/easyeda-skill-pcb-layout-routing) | PCB 板框、布局、布线、铺铜、丝印与生产验收；普通元件默认未锁定，并在完整任务中删除组件位号显示属性 |
 | `skills/easyeda-pro-format-skill` | 1.0.2 | [`easyeda-skill-pro-format`](https://github.com/A-m-o-r-F-a-t-i/easyeda-skill-pro-format) | 嘉立创底层格式文档、Schema 和格式校验器 |
 | `skills/easyeda-schematic-net-fanout` | 2.1.4 | [`easyeda-skill-schematic-net-fanout`](https://github.com/A-m-o-r-F-a-t-i/easyeda-skill-schematic-net-fanout) | 原理图设计、需求补全、ECO 和 PCB 同步 |
 | `mcp/easyeda-pcb` | 2.4.7 | [`easyeda-mcp-pcb`](https://github.com/A-m-o-r-F-a-t-i/easyeda-mcp-pcb) | 对当前 EasyEDA PCB 文档执行 21 个类型化、受保护并可独立读回的生产操作 |
@@ -52,8 +52,8 @@ pwsh ./scripts/build-plugin.ps1
 默认输出：
 
 ```text
-dist/easyeda-plugin-2.8.5/
-dist/easyeda-plugin-2.8.5.zip
+dist/easyeda-plugin-2.8.6/
+dist/easyeda-plugin-2.8.6.zip
 ```
 
 ## 更新组件

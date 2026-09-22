@@ -2,7 +2,7 @@
 
 [简体中文](README.md) | English
 
-This is the aggregate AgentDock plugin repository for the EasyEDA AI toolchain. The current plugin version is **2.8.5**. The parent repository stores only plugin manifests, the MCP launch configuration, build scripts, and pinned component commits. Five Skills and one PCB MCP are maintained in separate private GitHub repositories and assembled through Git submodules.
+This is the aggregate AgentDock plugin repository for the EasyEDA AI toolchain. The current plugin version is **2.8.6**. The parent repository stores only plugin manifests, the MCP launch configuration, build scripts, and pinned component commits. Five Skills and one PCB MCP are maintained in separate private GitHub repositories and assembled through Git submodules.
 
 ## Repository layout
 
@@ -10,7 +10,7 @@ This is the aggregate AgentDock plugin repository for the EasyEDA AI toolchain. 
 | --- | ---: | --- | --- |
 | `skills/easyeda-api` | 2.3.0 | [`easyeda-skill-api`](https://github.com/A-m-o-r-F-a-t-i/easyeda-skill-api) | Bridge, Gateway Protocol, window/document identity, and public API references |
 | `skills/easyeda-eprj3` | 1.7.1 | [`easyeda-skill-eprj3`](https://github.com/A-m-o-r-F-a-t-i/easyeda-skill-eprj3) | Offline `.eprj3` generation, editing, and validation |
-| `skills/easyeda-pcb-layout-routing` | 5.2.0 | [`easyeda-skill-pcb-layout-routing`](https://github.com/A-m-o-r-F-a-t-i/easyeda-skill-pcb-layout-routing) | Board outlines, placement, routing, pours, silkscreen, and release criteria |
+| `skills/easyeda-pcb-layout-routing` | 5.3.0 | [`easyeda-skill-pcb-layout-routing`](https://github.com/A-m-o-r-F-a-t-i/easyeda-skill-pcb-layout-routing) | Board outlines, placement, routing, pours, silkscreen, and release criteria; ordinary components remain unlocked and component reference-designator displays are removed during full-board work |
 | `skills/easyeda-pro-format-skill` | 1.0.2 | [`easyeda-skill-pro-format`](https://github.com/A-m-o-r-F-a-t-i/easyeda-skill-pro-format) | Low-level EasyEDA format documentation, schemas, and validator |
 | `skills/easyeda-schematic-net-fanout` | 2.1.4 | [`easyeda-skill-schematic-net-fanout`](https://github.com/A-m-o-r-F-a-t-i/easyeda-skill-schematic-net-fanout) | Schematic design, requirement expansion, ECO handling, and PCB synchronization |
 | `mcp/easyeda-pcb` | 2.4.7 | [`easyeda-mcp-pcb`](https://github.com/A-m-o-r-F-a-t-i/easyeda-mcp-pcb) | Twenty-one typed, guarded, and independently verified production operations against the active EasyEDA PCB |
@@ -52,8 +52,8 @@ pwsh ./scripts/build-plugin.ps1
 Default outputs:
 
 ```text
-dist/easyeda-plugin-2.8.5/
-dist/easyeda-plugin-2.8.5.zip
+dist/easyeda-plugin-2.8.6/
+dist/easyeda-plugin-2.8.6.zip
 ```
 
 ## Update components
