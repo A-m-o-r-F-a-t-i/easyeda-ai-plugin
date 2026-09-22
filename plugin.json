@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "easyeda",
-  "version": "2.8.7",
-  "description": "嘉立创 EDA 原理图与 PCB 工具。PCB Skill 5.3.1 默认保持普通元件未锁定并要求清除组件位号丝印显示；PCB MCP 2.4.8 提供 21 个生产工具，通过关闭 Designator 的可见状态而保留必需身份属性，并继续严格校验目标、旧状态、网络、层、孔、金属化和几何读回。",
+  "version": "2.8.8",
+  "description": "嘉立创 EDA 原理图与 PCB 工具。PCB Skill 5.4.0 恢复布局、布线、铺铜和交付阶段的必做 DRC，要求跨组件重叠立即修正，并仅对同网焊盘间距、可信库封装内部报告和施工期未布线作有记录的条件豁免；PCB MCP 2.4.8 继续提供 21 个受保护生产工具。",
   "extensions": {
     "io.github.uvwt.agentdock": {
       "heavy": true

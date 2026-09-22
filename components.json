@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "plugin": {
     "name": "easyeda",
-    "version": "2.8.7"
+    "version": "2.8.8"
   },
   "components": [
     {
@@ -22,7 +22,7 @@
     {
       "type": "skill",
       "name": "easyeda-pcb-layout-routing",
-      "version": "5.3.1",
+      "version": "5.4.0",
       "path": "skills/easyeda-pcb-layout-routing",
       "repository": "https://github.com/A-m-o-r-F-a-t-i/easyeda-skill-pcb-layout-routing.git"
     },
