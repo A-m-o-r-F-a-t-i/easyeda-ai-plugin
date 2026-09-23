@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "easyeda",
-  "version": "2.9.3",
+  "version": "2.10.0",
   "description": "嘉立创 EDA 原理图与 PCB 工具。PCB Skill 5.5.3 与 PCB MCP 2.5.1 将新板框改为原点锚定：圆形使用原点圆心，多边形只需包含原点顶点，异形板无需把几何中心放在原点；跨对象焊盘重叠防护、布局门和最多 100 个展开操作的完整布局轮次继续生效。21 个受保护生产工具与固定组件提交共同构成可复现插件。",
   "extensions": {
     "io.github.uvwt.agentdock": {
