@@ -2,13 +2,13 @@
   "schemaVersion": 1,
   "plugin": {
     "name": "easyeda",
-    "version": "3.0.0"
+    "version": "3.0.1"
   },
   "components": [
     {
       "type": "skill",
       "name": "easyeda-api",
-      "version": "2.4.0",
+      "version": "2.4.1",
       "path": "skills/easyeda-api",
       "repository": "https://github.com/A-m-o-r-F-a-t-i/easyeda-skill-api.git"
     },
@@ -22,7 +22,7 @@
     {
       "type": "skill",
       "name": "easyeda-pcb-layout-routing",
-      "version": "6.0.0",
+      "version": "6.0.1",
       "path": "skills/easyeda-pcb-layout-routing",
       "repository": "https://github.com/A-m-o-r-F-a-t-i/easyeda-skill-pcb-layout-routing.git"
     },
@@ -43,7 +43,7 @@
     {
       "type": "mcp",
       "name": "easyeda-pcb",
-      "version": "3.0.0",
+      "version": "3.0.1",
       "path": "mcp/easyeda-pcb",
       "repository": "https://github.com/A-m-o-r-F-a-t-i/easyeda-mcp-pcb.git"
     }
