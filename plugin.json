@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "easyeda",
-  "version": "2.10.0",
-  "description": "嘉立创 EDA 原理图与 PCB 工具。PCB Skill 5.6.0 按服务端组织功能组，并先试通关键通道；PCB MCP 2.6.0 提供整批候选几何阻断、原生旧值构造、只读对账与剩余计划、逐项执行回执和分组质量统计。保留原点板框、焊盘重叠保护及最多100个展开操作的布局批次，默认仍为21个工具，不自动布局或寻路。",
+  "version": "2.10.1",
+  "description": "嘉立创 EDA 原理图与 PCB 工具。PCB Skill 5.6.1 按服务端组织功能组，并先试通关键通道；PCB MCP 2.6.1 提供整批候选几何阻断、原生旧值构造、只读对账与剩余计划、逐项执行回执和分组质量统计。保留原点板框、焊盘重叠保护及最多100个展开操作的布局批次，默认仍为21个工具，不自动布局或寻路。",
   "extensions": {
     "io.github.uvwt.agentdock": {
       "heavy": true
