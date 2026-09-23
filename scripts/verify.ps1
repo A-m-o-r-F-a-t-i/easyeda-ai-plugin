@@ -74,6 +74,12 @@ $declaredMcp = @($components.components | Where-Object type -eq 'mcp')
 if ($declaredMcp.Count -ne 1 -or $declaredMcp[0].version -ne $mcpPackage.version) {
     throw 'PCB MCP version does not match components.json.'
 }
+foreach ($component in @($components.components | Where-Object type -eq 'skill')) {
+    $text = Get-Content -Raw -Encoding UTF8 (Join-Path $repoRoot "$($component.path)/SKILL.md")
+    if ($text -notmatch '(?m)^version:\s*([^\r\n]+)' -or $Matches[1].Trim() -ne $component.version) {
+        throw "Skill version does not match components.json: $($component.name)"
+    }
+}
 
 if (-not $SkipTests) {
     Invoke-Checked -Label 'EasyEDA API Skill syntax' -Action {

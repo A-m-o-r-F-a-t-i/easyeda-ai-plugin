@@ -56,6 +56,9 @@ function Export-GitTree {
 
 Copy-Item -LiteralPath $manifestPath -Destination (Join-Path $stagePath 'plugin.json')
 Copy-Item -LiteralPath (Join-Path $repoRoot 'mcp.json') -Destination (Join-Path $stagePath 'mcp.json')
+foreach ($file in @('components.json', 'README.md', 'README.en.md')) {
+    Copy-Item -LiteralPath (Join-Path $repoRoot $file) -Destination (Join-Path $stagePath $file)
+}
 
 $componentManifest = Get-Content -Raw -Encoding UTF8 (Join-Path $repoRoot 'components.json') | ConvertFrom-Json
 foreach ($component in $componentManifest.components) {
