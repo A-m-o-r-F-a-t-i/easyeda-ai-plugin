@@ -76,7 +76,7 @@ if ($declaredMcp.Count -ne 1 -or $declaredMcp[0].version -ne $mcpPackage.version
 }
 foreach ($component in @($components.components | Where-Object type -eq 'skill')) {
     $text = Get-Content -Raw -Encoding UTF8 (Join-Path $repoRoot "$($component.path)/SKILL.md")
-    if ($text -notmatch '(?m)^version:\s*([^\r\n]+)' -or $Matches[1].Trim() -ne $component.version) {
+    if ($text -notmatch '(?m)^\s*version:\s*([^\r\n]+)' -or $Matches[1].Trim() -ne $component.version) {
         throw "Skill version does not match components.json: $($component.name)"
     }
 }
