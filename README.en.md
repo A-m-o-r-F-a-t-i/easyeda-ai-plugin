@@ -1,13 +1,17 @@
-# EasyEDA AI Plugin 3.0.1
+# EasyEDA AI Plugin 4.1.0
 
-An aggregate of six independent Git submodules. PCB MCP 3.0.1 is the preferred wrapper for common native actions; PCB Skill 6.0.1 guides design, and API Skill 2.4.1 routes normal PCB work through the mil-default MCP while covering explicit capability gaps and Bridge development. Other schematic/format components are unchanged.
+Six pinned Git submodules: PCB MCP4.1.0, PCB Skill7.1.0, API Skill2.5.0 and three unchanged schematic/format Skills. The existing MIL-only refactor is retained with one 17-tool interface.
 
-The default 21-tool interface accepts direct bulk operations with designators and pin endpoints. Editing coordinates, overview/pin data, picking, SVG regions and pick-and-place export default to mil; metric input/output is explicit. There are no ordinary guard/prepare parameters, tiny public batch caps or design-approval gates. The model owns layout, explicit routes and analysis timing. MCP handles native adapters, transport slicing, factual results and overall/local SVG feedback.
+MCP adds physical-copper topology with holes and verified pours, existing path/layer/mandatory-via analysis, explicit cross-sections, copper corridors, rotated via arrays, pad-group orientation and durable request receipts. The model still chooses every placement and path. There is no autorouting, design gate, automatic copper deletion or native atomic-rollback claim.
 
-Complete component/footprint/pin-net orientation data includes size provenance and unknown fields. SVG labels are inspection overlays, not manufacturing text. DRC and other analyses are optional factual tools. Raw APIs are not a routine bypass of existing MCP wrappers.
+Topology reports its geometric coverage. Cross-sections are not a global minimum-neck solver. Receipt queries and same-ID duplicate suppression never blindly replay an unknown native write. DRC, geometric connectivity and electrical/thermal validation remain distinct.
 
-Requires Node.js >=22 and an authorized EasyEDA Bridge. Commit component changes and update submodule pins before running scripts/verify.ps1 and scripts/build-plugin.ps1. Output: dist/easyeda-plugin-3.0.1.zip. Register only the default service.
+## Build and deployment
 
-Offline tests and real-client read-only integration do not certify every live write combination. Production boards are not modified to validate this release. Code rollback does not restore board contents.
+Requires Node.js >=22 and the existing local Bridge/client. Commit child repositories and parent pointers first, then run `pwsh scripts/verify.ps1` and `pwsh scripts/build-plugin.ps1`. Verification and packaging do not update or reset submodules. The working trees must be clean and pinned.
 
-[中文](README.md) · [PCB Skill](skills/easyeda-pcb-layout-routing/SKILL.md) · [MCP](mcp/easyeda-pcb/README.md)
+Output: `dist/easyeda-plugin-4.1.0.zip`. The package includes locked MCP production dependencies and their licenses, but no private settings, logs or PCB data. Use the same archive on Windows and Linux ARM64; retain each host's Bridge/environment settings. Reload this plugin's schema and verify the active versions and 17-tool surface.
+
+No AgentDock or Gateway source changes are required. Synthetic tests, real-client read-only integration and actual test-copy writes are separate evidence. Production boards are not modified to test plugin updates.
+
+[中文](README.md) · [Skill](skills/easyeda-pcb-layout-routing/SKILL.md) · [MCP](mcp/easyeda-pcb/README.md)

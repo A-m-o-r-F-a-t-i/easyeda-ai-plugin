@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "easyeda",
-  "version": "3.0.1",
-  "description": "嘉立创 EDA AI 插件。PCB MCP 3.0.1 将编辑、总览、引脚、拾取、SVG区域和贴片坐标统一默认为 mil；PCB Skill 6.0.1 提供 MCP 优先的自主设计工作流。",
+  "version": "4.1.0",
+  "description": "嘉立创 EDA AI 插件。PCB MCP 4.1.0 提供17个MIL-only工具、实际铜区拓扑、显式铜带/孔阵列/焊盘朝向和持久回执；PCB Skill 7.1.0 指导自主布局布线。",
   "extensions": {
     "io.github.uvwt.agentdock": {
       "heavy": true

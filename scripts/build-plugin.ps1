@@ -18,9 +18,13 @@ $packageName = "easyeda-plugin-$($manifest.version)"
 $stagePath = Join-Path $OutputDirectory $packageName
 $zipPath = Join-Path $OutputDirectory "$packageName.zip"
 
-& git -C $repoRoot submodule update --init --recursive
-if ($LASTEXITCODE -ne 0) {
-    throw 'Unable to initialize plugin submodules.'
+$dirty = @(& git -C $repoRoot status --porcelain --untracked-files=normal)
+if ($LASTEXITCODE -ne 0 -or $dirty.Count -gt 0) {
+    throw 'Commit the reviewed parent and component changes before packaging.'
+}
+$pins = @(& git -C $repoRoot submodule status --recursive)
+if ($LASTEXITCODE -ne 0 -or $pins.Count -ne 6 -or @($pins | Where-Object { $_[0] -in @('-', '+', 'U') }).Count -gt 0) {
+    throw 'Submodule checkouts must match the six committed parent pins; packaging never changes them.'
 }
 
 New-Item -ItemType Directory -Path $OutputDirectory -Force | Out-Null
@@ -73,7 +77,7 @@ foreach ($component in $componentManifest.components) {
 $mcpPath = Join-Path $stagePath 'mcp/easyeda-pcb'
 Push-Location $mcpPath
 try {
-    & npm ci --omit=dev
+    & npm ci --omit=dev --ignore-scripts --no-audit --no-fund
     if ($LASTEXITCODE -ne 0) {
         throw 'Failed to install PCB MCP production dependencies.'
     }

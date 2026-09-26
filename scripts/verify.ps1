@@ -34,13 +34,7 @@ if (@($components.components).Count -ne 6) {
     throw 'Exactly five Skills and one MCP are required.'
 }
 
-Invoke-Checked -Label 'Synchronize submodule URLs' -Action {
-    & git -C $repoRoot submodule sync --recursive
-}
-Invoke-Checked -Label 'Initialize pinned submodules' -Action {
-    & git -C $repoRoot submodule update --init --recursive
-}
-
+# Verification never changes component checkouts or fetches another revision.
 $submoduleLines = @(& git -C $repoRoot submodule status --recursive)
 if ($LASTEXITCODE -ne 0) {
     throw 'Unable to read submodule status.'
@@ -101,7 +95,7 @@ if (-not $SkipTests) {
     Invoke-Checked -Label 'EasyEDA format Skill validation' -Action {
         Push-Location (Join-Path $repoRoot 'skills/easyeda-pro-format-skill')
         try {
-            & npm ci
+            & npm ci --ignore-scripts --no-audit --no-fund
             if ($LASTEXITCODE -ne 0) { return }
             $formatSmokeScript = "const {validateFormat}=require('./validate.js');const result=validateFormat('FONT',{width:50,height:40,path:[[2,5,'L',2,35,48,35,48,5,2,5]]});console.log(JSON.stringify(result,null,2));process.exit(result.valid?0:1);"
             & node -e $formatSmokeScript
@@ -112,7 +106,7 @@ if (-not $SkipTests) {
     Invoke-Checked -Label 'PCB MCP tests' -Action {
         Push-Location (Join-Path $repoRoot 'mcp/easyeda-pcb')
         try {
-            & npm ci
+            & npm ci --ignore-scripts --no-audit --no-fund
             if ($LASTEXITCODE -ne 0) { return }
             & npm test
         }

@@ -1,31 +1,31 @@
-# 嘉立创 EDA AI 插件 3.0.1
+# 嘉立创 EDA AI 插件 4.1.0
 
-聚合可独立维护的 API Skill、PCB Skill、原理图/格式 Skill 与 PCB MCP。MCP 优先将常见 API 操作封装为简洁接口，AI 自主设计，Skill 提供方法和建议工作流。
+聚合五个独立 Skill 和一个 PCB MCP 子仓。沿用 MIL-only 重构，只保留一套 17 工具接口。AI 决定布局、铜宽、路径、过孔和分析时机，MCP 封装显式操作与实际反馈，不自动布线、不增加设计门控。
 
-| 成员 | 版本与职责 |
-| --- | --- |
-| PCB MCP | 3.0.1：默认21工具，所有常规坐标默认 mil，直接大批量编辑、完整元件网络朝向读取、整体/局部 SVG |
-| PCB Skill | 6.0.1：MCP 优先、mil 默认、设计经验、按需分析，无强制准备链或设计门控 |
-| API Skill | 2.4.1：MCP 3.0.1/mil 默认路由、原生能力资料、Bridge、扩展开发和明确封装缺口诊断 |
-| 其他三个 Skill | 保持现有版本，原理图和格式能力不受本次改造影响 |
+| 组件 | 版本 | 本次职责 |
+| --- | --- | --- |
+| PCB MCP | 4.1.0 | 实际铜拓扑、孔洞、端点换层/必经孔、指定截面、连续铜带、孔阵列、焊盘组朝向和持久执行回执 |
+| PCB Skill | 7.1.0 | 功率及返回优先，困难处调整布局，按需拓扑分析，区分DRC和电气验证 |
+| API Skill | 2.5.0 | 同步17工具MIL-only路由，保留既有Bridge/Gateway实现 |
+| 原理图和格式三个Skill | 保持原版本 | 本次不改动其业务能力 |
 
-普通编辑使用位号、U1.12 端点和层名，编辑坐标、总览/引脚映射、拾取、SVG区域及贴片坐标均默认 mil；需要毫米时显式填写 mm。未填写字段保持原值。MCP 内部处理对象和参数转换、批量分片、原生返回与部分成功。没有自动布局、寻路或隐藏几何优化。检查工具返回事实，不决定编辑权限。
+普通编辑统一使用 pcb_edit。新操作 orient、copper_path、via_array 只执行给定几何，不寻找路线或删除旧铜。pcb_read 的 topology 模式分析现有铜连接，sections 只测指定截面，未知形状和成铜单位保留coverage缺口。
 
-读取总览区分真实本体、装配图形、丝印和焊盘包络。SVG 提供可读的引脚/网络标识，辅助标注不写入板上丝印。未知原生外形和未覆盖几何如实列出。
+requestId 可用于相同请求的持久去重，receipt/receipts 模式读取回执。派发结果未知时不重放，不承诺原生原子事务或自动回滚。SVG修复复合孔洞、圆弧边界和纯铜修改区域反馈。位号隐藏保留元件身份及功能文字。
 
 ## 安装与开发
 
-需要 Node.js >=22、已授权 Bridge 和嘉立创客户端。安装本仓库构建的 ZIP，插件保持一个默认 MCP 服务。更新后加载新的工具 Schema；旧会话中的 mode/guard 请求不属于3.0接口。
+需要Node.js >=22、现有本地Bridge及嘉立创客户端。仓库以六个Git子模块固定组件提交。先提交组件和主仓指针，再执行：
 
-仓库用六个 Git 子模块固定组件提交。提交子仓库修改并更新本仓库指针后执行：
-
-~~~powershell
+```powershell
 pwsh scripts/verify.ps1
 pwsh scripts/build-plugin.ps1
-~~~
+```
 
-构建输出 dist/easyeda-plugin-3.0.1.zip。构建使用子模块的已提交 HEAD，不会把未提交源文件误当发布内容。源码回滚不会恢复已修改的 PCB。
+构建只读取已提交且干净、与主仓指针匹配的源码，不自动更新或重置子模块。发行包为 dist/easyeda-plugin-4.1.0.zip，包含锁定的MCP生产依赖及其许可证，不包含私有配置、日志或PCB设计文件。
 
-自动化测试、真实只读和真实写入分别报告。本次默认不在生产板上写测试对象；只读成功不意味着全部写操作实机通过。
+两设备使用同一包，保留各自Bridge与MCP环境配置。更新后刷新该插件工具Schema并核对17工具和版本。只读联调、模拟写入与实板写入分别报告；工具维护不修改生产PCB。
 
-组件清单见 components.json，操作示例见 [PCB Skill](skills/easyeda-pcb-layout-routing/SKILL.md)。[English](README.en.md)
+本次无需修改AgentDock或Gateway，也不包含全局最小铜颈搜索、自动回流布线、原生事务回滚和电流/阻抗仿真。
+
+[English](README.en.md) · [PCB Skill](skills/easyeda-pcb-layout-routing/SKILL.md) · [MCP](mcp/easyeda-pcb/README.zh-CN.md)
