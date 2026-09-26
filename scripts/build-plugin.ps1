@@ -58,6 +58,43 @@ function Export-GitTree {
     }
 }
 
+function Install-NodeProductionDependencies {
+    param(
+        [Parameter(Mandatory)] [string]$RelativePath,
+        [Parameter(Mandatory)] [string]$Label,
+        [Parameter(Mandatory)] [string[]]$RequiredPaths,
+        [Parameter(Mandatory)] [string]$Probe
+    )
+
+    $componentPath = Join-Path $stagePath $RelativePath
+    foreach ($file in @('package.json', 'package-lock.json')) {
+        if (-not (Test-Path (Join-Path $componentPath $file))) {
+            throw "$Label is missing $file in the committed export."
+        }
+    }
+
+    Push-Location $componentPath
+    try {
+        & npm ci --omit=dev --ignore-scripts --no-audit --no-fund
+        if ($LASTEXITCODE -ne 0) {
+            throw "Failed to install $Label production dependencies."
+        }
+        & node --input-type=module -e $Probe
+        if ($LASTEXITCODE -ne 0) {
+            throw "$Label production dependency probe failed."
+        }
+    }
+    finally {
+        Pop-Location
+    }
+
+    foreach ($requiredPath in $RequiredPaths) {
+        if (-not (Test-Path (Join-Path $componentPath $requiredPath))) {
+            throw "$Label package is missing required runtime file: $requiredPath"
+        }
+    }
+}
+
 Copy-Item -LiteralPath $manifestPath -Destination (Join-Path $stagePath 'plugin.json')
 Copy-Item -LiteralPath (Join-Path $repoRoot 'mcp.json') -Destination (Join-Path $stagePath 'mcp.json')
 foreach ($file in @('components.json', 'README.md', 'README.en.md')) {
@@ -74,17 +111,21 @@ foreach ($component in $componentManifest.components) {
     Export-GitTree -Source $source -Destination $destination
 }
 
-$mcpPath = Join-Path $stagePath 'mcp/easyeda-pcb'
-Push-Location $mcpPath
-try {
-    & npm ci --omit=dev --ignore-scripts --no-audit --no-fund
-    if ($LASTEXITCODE -ne 0) {
-        throw 'Failed to install PCB MCP production dependencies.'
-    }
-}
-finally {
-    Pop-Location
-}
+Install-NodeProductionDependencies `
+    -RelativePath 'skills/easyeda-api' `
+    -Label 'EasyEDA API Skill' `
+    -RequiredPaths @('node_modules/ws/package.json') `
+    -Probe "await import('ws');"
+
+Install-NodeProductionDependencies `
+    -RelativePath 'mcp/easyeda-pcb' `
+    -Label 'PCB MCP' `
+    -RequiredPaths @(
+        'node_modules/@modelcontextprotocol/sdk/package.json',
+        'node_modules/polygon-clipping/package.json',
+        'node_modules/zod/package.json'
+    ) `
+    -Probe "await import('@modelcontextprotocol/sdk/server/mcp.js'); await import('polygon-clipping'); await import('zod');"
 
 Compress-Archive -Path (Join-Path $stagePath '*') -DestinationPath $zipPath -CompressionLevel Optimal
 

@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "easyeda",
-  "version": "4.1.1",
-  "description": "嘉立创 EDA AI 插件。PCB MCP 4.1.0 保持17个MIL-only工具；PCB Skill 7.2.0 补足完整通道、参考层职责、回流孔布置、定向刷新和证据范围指导。",
+  "version": "4.1.2",
+  "description": "嘉立创 EDA AI 插件。PCB MCP 4.1.0 保持17个MIL-only工具，PCB Skill 7.2.0 保持完整通道与回流指导；4.1.2 补齐 API Bridge 的锁定运行依赖。",
   "extensions": {
     "io.github.uvwt.agentdock": {
       "heavy": true

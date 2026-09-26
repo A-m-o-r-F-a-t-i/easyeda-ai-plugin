@@ -50,6 +50,8 @@ foreach ($line in $submoduleLines) {
 
 $requiredFiles = @(
     'skills/easyeda-api/SKILL.md',
+    'skills/easyeda-api/package.json',
+    'skills/easyeda-api/package-lock.json',
     'skills/easyeda-eprj3/SKILL.md',
     'skills/easyeda-pcb-layout-routing/SKILL.md',
     'skills/easyeda-pro-format-skill/SKILL.md',
@@ -61,6 +63,18 @@ foreach ($relativePath in $requiredFiles) {
     if (-not (Test-Path (Join-Path $repoRoot $relativePath))) {
         throw "Required component file is missing: $relativePath"
     }
+}
+
+$apiPackagePath = Join-Path $repoRoot 'skills/easyeda-api/package.json'
+$apiLockPath = Join-Path $repoRoot 'skills/easyeda-api/package-lock.json'
+$apiPackage = Get-Content -Raw -Encoding UTF8 $apiPackagePath | ConvertFrom-Json
+$apiLock = Get-Content -Raw -Encoding UTF8 $apiLockPath | ConvertFrom-Json -AsHashtable
+$apiLockRoot = $apiLock['packages']['']
+if ($apiPackage.name -ne 'easyeda-api' -or [string]::IsNullOrWhiteSpace([string]$apiPackage.dependencies.ws)) {
+    throw 'EasyEDA API Skill must declare its ws runtime dependency.'
+}
+if ($null -eq $apiLockRoot -or $apiLockRoot['dependencies']['ws'] -ne $apiPackage.dependencies.ws) {
+    throw 'EasyEDA API Skill package-lock does not match its ws runtime dependency.'
 }
 
 $mcpPackage = Get-Content -Raw -Encoding UTF8 (Join-Path $repoRoot 'mcp/easyeda-pcb/package.json') | ConvertFrom-Json
